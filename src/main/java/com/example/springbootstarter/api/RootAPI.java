@@ -1,8 +1,10 @@
 package com.example.springbootstarter.api;
 
+import com.example.springbootstarter.exception.InvalidPayloadException;
 import com.example.springbootstarter.helper.JsonArray;
 import com.example.springbootstarter.helper.JsonObject;
 import com.example.springbootstarter.helper.Pair;
+import com.example.springbootstarter.util.Validators;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +34,17 @@ public class RootAPI
         );
         return ResponseEntity.ok(obj);
     }
-    @PostMapping("/")
-    public ResponseEntity<?> cringe(@RequestBody Object body){
 
-        return ResponseEntity.ok(body);
+    @PostMapping("/")
+    public ResponseEntity<?> rootPost(@RequestBody JsonObject body) throws InvalidPayloadException {
+        Validators.init(body)
+                .required( "a", "b", "c")
+                .required( "d", "e", "f")
+                .close();
+        JsonObject obj = new JsonObject(
+                Pair.create("message", "loaded payload"),
+                Pair.create("payload", body)
+        );
+        return ResponseEntity.ok(obj);
     }
 }

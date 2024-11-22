@@ -8,13 +8,16 @@ public class JsonArray extends ArrayList<Object> {
     /**
      * default constructor
      */
-    public JsonArray(){ super();}
+    public JsonArray() {
+        super();
+    }
 
     /**
      * Varargs constructor
+     *
      * @param args varargs to insert
      */
-    public JsonArray(Object ... args){
+    public JsonArray(Object... args) {
         this();
         addAll(Arrays.asList(args));
     }
