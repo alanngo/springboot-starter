@@ -29,7 +29,7 @@ public class Pair implements Map.Entry<String, Object> {
     }
 
     public static Pair create(String k, Object v) {
-        if (k.isBlank())
+        if (k.trim().isEmpty())
             throw new IllegalArgumentException("Cannot have blank keys");
         return new Pair(k, v);
     }
