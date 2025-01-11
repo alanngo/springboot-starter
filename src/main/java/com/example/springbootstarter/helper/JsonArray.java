@@ -5,20 +5,19 @@ import java.util.Arrays;
 
 public class JsonArray extends ArrayList<Object> {
 
-    /**
-     * default constructor
-     */
-    public JsonArray() {
+    private JsonArray() {
         super();
     }
 
     /**
-     * Varargs constructor
-     *
+     * creates json array with prepopulated values
      * @param args varargs to insert
+     * @return populated Json Array
      */
-    public JsonArray(Object... args) {
-        this();
-        addAll(Arrays.asList(args));
+    public static JsonArray create(Object... args) {
+        JsonArray ret = new JsonArray();
+        ret.addAll(Arrays.asList(args));
+        return ret;
     }
+
 }

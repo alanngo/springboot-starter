@@ -3,21 +3,28 @@ package com.example.springbootstarter.helper;
 import java.util.HashMap;
 
 public class JsonObject extends HashMap<String, Object> {
-    /**
-     * default constructor
-     */
-    public JsonObject() {
+
+    private JsonObject() {
         super();
     }
 
     /**
-     * builds dto from different pairs
-     *
+     * builds json object from arguments
      * @param args kvp arguments to insert
+     * @return constructed json object
      */
-    public JsonObject(Pair... args) {
-        this();
+    public static JsonObject create(Pair... args) {
+        JsonObject ret = new JsonObject();
         for (Pair entry : args)
-            super.put(entry.getKey(), entry.getValue());
+            ret.put(entry.getKey(), entry.getValue());
+        return ret;
     }
+
+    public static JsonObject create(String key, Object value) {
+        JsonObject ret = new JsonObject();
+        ret.put(key, value);
+        return ret;
+    }
+
+
 }

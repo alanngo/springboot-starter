@@ -17,7 +17,7 @@ public class ValidatorTests {
     @Test
     void requiredPass() {
         assertDoesNotThrow(() -> {
-            JsonObject o = new JsonObject(Pair.create("key", "value"));
+            JsonObject o = JsonObject.create(Pair.create("key", "value"));
             Validators.init(o).required("key").close();
         });
     }
@@ -25,7 +25,7 @@ public class ValidatorTests {
     @Test
     void requiredFail() {
         assertThrows(InvalidPayloadException.class, () -> {
-            JsonObject o = new JsonObject(Pair.create("key", null));
+            JsonObject o = JsonObject.create(Pair.create("key", null));
             Validators.init(o).required("key").close();
         });
     }
@@ -33,7 +33,7 @@ public class ValidatorTests {
     @Test
     void ltPass() {
         assertDoesNotThrow(() -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10));
+            JsonObject o = JsonObject.create(Pair.create("key", 10));
             Validators.init(o).lt("key", 11.0).close();
         });
     }
@@ -41,7 +41,7 @@ public class ValidatorTests {
     @Test
     void ltFail() {
         assertThrows(InvalidPayloadException.class, () -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10));
+            JsonObject o = JsonObject.create(Pair.create("key", 10));
             Validators.init(o).lt("key", 9.0).close();
         });
     }
@@ -49,7 +49,7 @@ public class ValidatorTests {
     @Test
     void ltePass() {
         assertDoesNotThrow(() -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10.0));
+            JsonObject o = JsonObject.create(Pair.create("key", 10.0));
             Validators.init(o).lte("key", 10.0).close();
         });
     }
@@ -57,7 +57,7 @@ public class ValidatorTests {
     @Test
     void lteFail() {
         assertThrows(InvalidPayloadException.class, () -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10));
+            JsonObject o = JsonObject.create(Pair.create("key", 10));
             Validators.init(o).lte("key", 9.0).close();
         });
     }
@@ -65,7 +65,7 @@ public class ValidatorTests {
     @Test
     void gtPass() {
         assertDoesNotThrow(() -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10));
+            JsonObject o = JsonObject.create(Pair.create("key", 10));
             Validators.init(o).gt("key", 5.0).close();
         });
     }
@@ -73,7 +73,7 @@ public class ValidatorTests {
     @Test
     void gtFail() {
         assertThrows(InvalidPayloadException.class, () -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10));
+            JsonObject o = JsonObject.create(Pair.create("key", 10));
             Validators.init(o).gt("key", 11.0).close();
         });
     }
@@ -81,7 +81,7 @@ public class ValidatorTests {
     @Test
     void gtePass() {
         assertDoesNotThrow(() -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10.0));
+            JsonObject o = JsonObject.create(Pair.create("key", 10.0));
             Validators.init(o).gte("key", 10.0).close();
         });
     }
@@ -89,7 +89,7 @@ public class ValidatorTests {
     @Test
     void gteFail() {
         assertThrows(InvalidPayloadException.class, () -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10));
+            JsonObject o = JsonObject.create(Pair.create("key", 10));
             Validators.init(o).gte("key", 11.0).close();
         });
     }
@@ -97,7 +97,7 @@ public class ValidatorTests {
     @Test
     void inRangeInclusivePass() {
         assertDoesNotThrow(() -> {
-            JsonObject o = new JsonObject(Pair.create("key", 10));
+            JsonObject o = JsonObject.create(Pair.create("key", 10));
             Validators.init(o).inRangeInclusive("key", 4.0, 10.0).close();
         });
     }
@@ -105,7 +105,7 @@ public class ValidatorTests {
     @Test
     void inRangeInclusiveFail() {
         assertThrows(InvalidPayloadException.class, () -> {
-            JsonObject o = new JsonObject(Pair.create("key", 12));
+            JsonObject o = JsonObject.create(Pair.create("key", 12));
             Validators.init(o).inRangeInclusive("key", 4.0, 10.0).close();
         });
     }
@@ -113,7 +113,7 @@ public class ValidatorTests {
     @Test
     void inRangeExclusivePass() {
         assertDoesNotThrow(() -> {
-            JsonObject o = new JsonObject(Pair.create("key", 6));
+            JsonObject o = JsonObject.create(Pair.create("key", 6));
             Validators.init(o).inRangeExclusive("key", 4.0, 10.0).close();
         });
     }
@@ -121,7 +121,7 @@ public class ValidatorTests {
     @Test
     void inRangeExclusiveFail() {
         assertThrows(InvalidPayloadException.class, () -> {
-            JsonObject o = new JsonObject(Pair.create("key", 12));
+            JsonObject o = JsonObject.create(Pair.create("key", 12));
             Validators.init(o).inRangeExclusive("key", 4.0, 10.0).close();
         });
     }

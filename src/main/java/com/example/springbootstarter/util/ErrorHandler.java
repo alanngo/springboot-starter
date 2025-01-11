@@ -16,7 +16,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 public class ErrorHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleGeneralError(Exception e) {
-        JsonObject error = new JsonObject(
+        JsonObject error = JsonObject.create(
                 Pair.create("message", e.getMessage()),
                 Pair.create("code", INTERNAL_SERVER_ERROR.value())
         );
@@ -26,7 +26,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(InvalidPayloadException.class)
     public ResponseEntity<?> handleInvalidPayload(InvalidPayloadException e) {
-        JsonObject error = new JsonObject(
+        JsonObject error = JsonObject.create(
                 Pair.create("message", "Invalid payload"),
                 Pair.create("violations", e.getMessages()),
                 Pair.create("code", BAD_REQUEST.value())

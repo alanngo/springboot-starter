@@ -1,18 +1,13 @@
 package com.example.springbootstarter.exception;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.util.Collection;
 
-public class InvalidPayloadException extends Exception {
-
-    public InvalidPayloadException(Collection<String> messageList){
-        messages = messageList;
-        messageList.clear();
-    }
-    public Collection<String> getMessages()
-    {
-        if (!messages.isEmpty())
-            return messages;
-        return null;
-    }
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class InvalidPayloadException extends Exception
+{
     private final Collection<String> messages;
 }

@@ -19,13 +19,13 @@ public class RootAPI
 {
     @GetMapping("/")
     public ResponseEntity<?> root(){
-        JsonObject obj = new JsonObject(
+        JsonObject obj = JsonObject.create(
                 Pair.create("string", "hello world"),
                 Pair.create("number", 3.1415926),
                 Pair.create("boolean", true),
                 Pair.create("null", null),
-                Pair.create("array", new JsonArray("king", "queen", "rook", "bishop", "knight", "pawn")),
-                Pair.create("object", new JsonObject(
+                Pair.create("array", JsonArray.create("king", "queen", "rook", "bishop", "knight", "pawn")),
+                Pair.create("object", JsonObject.create(
                         Pair.create("Ace", 14),
                         Pair.create("King", 13),
                         Pair.create("Queen", 12),
@@ -41,7 +41,7 @@ public class RootAPI
                 .required( "a", "b", "c")
                 .required( "d", "e", "f")
                 .close();
-        JsonObject obj = new JsonObject(
+        JsonObject obj = JsonObject.create(
                 Pair.create("message", "loaded payload"),
                 Pair.create("payload", body)
         );
