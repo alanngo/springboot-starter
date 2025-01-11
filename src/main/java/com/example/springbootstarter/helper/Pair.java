@@ -1,8 +1,10 @@
 package com.example.springbootstarter.helper;
 
-import java.util.Map;
+import lombok.Data;
+import  java.util.Map.Entry;
 
-public class Pair implements Map.Entry<String, Object> {
+@Data
+public class Pair implements Entry<String, Object> {
     private final String key;
     private Object value;
 
@@ -10,22 +12,6 @@ public class Pair implements Map.Entry<String, Object> {
     private Pair(String k, Object v) {
         key = k;
         setValue(v);
-    }
-
-    @Override
-    public String getKey() {
-        return key;
-    }
-
-    @Override
-    public Object getValue() {
-        return value;
-    }
-
-    @Override
-    public Object setValue(Object o) {
-        value = o;
-        return value;
     }
 
     public static Pair create(String k, Object v) {
